@@ -20,6 +20,7 @@ $(document).ready(function(){
 		["OUT"],
 		["NOP"]
 	];
+	var stack = [];
 
 	$('#btnReset').click(function() { reset(); });
 	$('#btnNextStep').click(function() { computeCycle(); });
@@ -104,8 +105,8 @@ $(document).ready(function(){
 		var parts = value.split(" ");
 		var inst = getInstruction(parts[0]);
 		return (inst == -1  && parts.length == 1 && isValidNumber(parts[0]))
-		    || ((inst != 12 && inst != 15) && parts.length == 2 && isValidAddress(parts[1]))
-		    || ((inst == 12 || inst == 15) && parts.length == 1);
+		    || ((inst != 11 && inst != 12 && inst != 15) && parts.length == 2 && isValidAddress(parts[1]))
+		    || ((inst == 11 || inst == 12 || inst == 15) && parts.length == 1);
 	}
 
 	function isValidAddress(value)
@@ -131,6 +132,7 @@ $(document).ready(function(){
 			return "ERROR";
 		}
 		switch (inst) {
+			case 11:
 			case 12:
 			case 15: return Number(inst).toString(16).toUpperCase() + "000";
 		}
@@ -278,12 +280,13 @@ $(document).ready(function(){
 			}
 			case 10: // SC
 			{
-				alert("TODO: Iniciacao cientifica bem-vinda!");
+				stack.push(ic);
+				ic = "0" + oi;
 				break;
 			}
 			case 11: // RS
 			{
-				alert("TODO: Iniciacao cientifica bem-vinda!");
+				ic = increaseIC( stack.pop() );
 				break;
 			}
 			case 12: // END
