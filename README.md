@@ -1,6 +1,6 @@
-# espm.16bits
+# ESPM 16bits - processor simulator
 
-It is a processador simulator, for didact purposes, based on 16 bits.
+It is a processador simulator with didact purposes built with 16 bits.
 
 Production: https://cdn.rawgit.com/hsandmann/espm.16bits/master/index.html
 
