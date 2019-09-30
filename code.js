@@ -105,8 +105,8 @@ $(document).ready(function(){
 		var parts = value.split(" ");
 		var inst = getInstruction(parts[0]);
 		return (inst == -1  && parts.length == 1 && isValidNumber(parts[0]))
-		    || ((inst != 11 && inst != 12 && inst != 15) && parts.length == 2 && isValidAddress(parts[1]))
-		    || ((inst == 11 || inst == 12 || inst == 15) && parts.length == 1);
+		    || (inst  < 11 && parts.length == 2 && isValidAddress(parts[1]))
+		    || (inst >= 11 && inst <= 15 && parts.length == 1);
 	}
 
 	function isValidAddress(value)
@@ -134,6 +134,8 @@ $(document).ready(function(){
 		switch (inst) {
 			case 11:
 			case 12:
+			case 13:
+			case 14:
 			case 15: return Number(inst).toString(16).toUpperCase() + "000";
 		}
 		return Number(inst).toString(16).toUpperCase() + parts[1];
@@ -295,7 +297,7 @@ $(document).ready(function(){
 			}
 			case 13: // IN
 			{
-				ac = formatHex(prompt("Entre com um valor (hexadecimal)", ""));
+				ac = formatHex(parseInt( prompt("Entre com um valor (hexadecimal)", "0"), 16 ));
 				ic = increaseIC( ic );
 				break;
 			}
