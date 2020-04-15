@@ -231,7 +231,8 @@ $(document).ready(function(){
 			}
 			case 3: // LV
 			{	
-				ac = oi;
+				var v = parseInt( readPosition( "0" + oi ), 16 );
+				ac = formatHex(v);
 				ic = increaseIC( ic );
 				break;
 			}
