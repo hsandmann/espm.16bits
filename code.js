@@ -232,7 +232,7 @@ $(document).ready(function(){
 			case 3: // LV
 			{	
 				var v = parseInt( "0" + oi, 16 );
-				ac = formatHex(v);
+				ac = formatHex( v );
 				ic = increaseIC( ic );
 				break;
 			}
@@ -240,7 +240,7 @@ $(document).ready(function(){
 			{
 				var v = parseInt( readPosition( "0" + oi ), 16 );
 				var r = parseInt( ac, 16 ) + v;
-				ac = formatHex(r);
+				ac = formatHex( r );
 				ic = increaseIC( ic );
 				break;
 			}
@@ -248,7 +248,7 @@ $(document).ready(function(){
 			{
 				var v = parseInt( readPosition( "0" + oi ), 16 );
 				var r = parseInt( ac, 16 ) - v;
-				ac = formatHex(r);
+				ac = formatHex( r );
 				ic = increaseIC( ic );
 				break;
 			}
@@ -256,7 +256,7 @@ $(document).ready(function(){
 			{
 				var v = parseInt( readPosition( "0" + oi ), 16 );
 				var r = parseInt( ac, 16 ) * v;
-				ac = formatHex(r);
+				ac = formatHex( r );
 				ic = increaseIC( ic );
 				break;
 			}
@@ -264,7 +264,7 @@ $(document).ready(function(){
 			{
 				var v = parseInt( readPosition( "0" + oi ), 16 );
 				var r = Math.floor(parseInt( ac, 16 ) / v);
-				ac = formatHex(r);
+				ac = formatHex( r );
 				ic = increaseIC( ic );
 				break;
 			}
@@ -283,7 +283,7 @@ $(document).ready(function(){
 			}
 			case 10: // SC
 			{
-				stack.push(ic);
+				stack.push( ic );
 				ic = "0" + oi;
 				break;
 			}
